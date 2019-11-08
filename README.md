@@ -9,6 +9,8 @@ This package provides a command to download your production database and `storag
 
 In the current state this package mainly scratches our own itch. Nonetheless this package can be used in nearly every Laravel environment.
 
+![Screenshot of the command](https://digifactory.github.io/laravel-pull-production-data/screenshot.png)
+
 The package assumes you have:
 - Environment variables `DEPLOY_SERVER` and `DEPLOY_PATH` (customisable in the config)
 - Setup SSH keys between your machine and the production machine
@@ -18,7 +20,7 @@ The package assumes you have:
 You can install the package via composer:
 
 ```bash
-composer require-dev digifactory/laravel-pull-production-data
+composer require digifactory/laravel-pull-production-data --dev
 ```
 
 ## Usage
