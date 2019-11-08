@@ -40,6 +40,12 @@ The following flags are available:
 | -D, --no-database | Whether the database should not be synced |
 | -S, --no-storage-folder | Whether the storage folder should not be synced |
 
+You can publish the config file:
+
+``` bash
+php artisan vendor:publish --provider="DigiFactory\PullProductionData\PullProductionDataServiceProvider" --tag="config"
+```
+
 ### Testing
 
 ``` bash
