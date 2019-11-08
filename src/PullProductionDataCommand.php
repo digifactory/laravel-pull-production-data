@@ -33,7 +33,7 @@ class PullProductionDataCommand extends Command
         if (count($matches) === 4) {
             $this->user = $matches[1];
             $this->host = $matches[2];
-            $this->port = $matches[3] ? (int)$matches[3] : 22;
+            $this->port = $matches[3] ? (int) $matches[3] : 22;
         }
     }
 
@@ -44,13 +44,13 @@ class PullProductionDataCommand extends Command
      */
     public function handle()
     {
-        if (!$this->user || !$this->host || !$this->path) {
+        if (! $this->user || ! $this->host || ! $this->path) {
             $this->error('Make sure DEPLOY_SERVER and DEPLOY_PATH are set in your .env file!');
 
             return;
         }
 
-        if (!$this->confirm("Is it alright to sync production data from {$this->user} on {$this->host}?", false)) {
+        if (! $this->confirm("Is it alright to sync production data from {$this->user} on {$this->host}?", false)) {
             $this->error('Aborted!');
 
             return;
