@@ -1,0 +1,54 @@
+{
+    "name": "digifactory/laravel-pull-production-data",
+    "description": "Pull your production storage folder and database to your local environment",
+    "keywords": [
+        "digifactory",
+        "laravel-pull-production-data"
+    ],
+    "homepage": "https://github.com/digifactory/laravel-pull-production-data",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Mark",
+            "email": "mark@digifactory.nl",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.3",
+        "illuminate/database": "^6.0",
+        "illuminate/filesystem": "^6.0",
+        "illuminate/support": "^6.0",
+        "symfony/process": "^4.3.4"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.0",
+        "phpunit/phpunit": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "DigiFactory\\PullProductionData\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "DigiFactory\\PullProductionData\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "DigiFactory\\PullProductionData\\PullProductionDataServiceProvider"
+            ]
+        }
+    }
+}
