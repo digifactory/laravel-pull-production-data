@@ -33,7 +33,7 @@ class PullProductionDataCommand extends Command
         if (count($matches) === 4) {
             $this->user = $matches[1];
             $this->host = $matches[2];
-            $this->port = $matches[3] ? (int) $matches[3] : 22;
+            $this->port = $matches[3] ? (int)$matches[3] : 22;
         }
     }
 
@@ -44,33 +44,30 @@ class PullProductionDataCommand extends Command
      */
     public function handle()
     {
-        if (! $this->user || ! $this->host || ! $this->path) {
+        if (!$this->user || !$this->host || !$this->path) {
             $this->error('Make sure DEPLOY_SERVER and DEPLOY_PATH are set in your .env file!');
 
             return;
         }
 
-        if (! $this->confirm("Is it alright to sync production data from {$this->user} on {$this->host}?", false)) {
+        if (!$this->confirm("Is it alright to sync production data from {$this->user} on {$this->host}?", false)) {
             $this->error('Aborted!');
 
             return;
         }
 
-        if (! $this->option('no-database')) {
-            $this->syncDatabase();
-        } else {
-            $this->line('Skipping database...');
-        }
-
-        if (! $this->option('no-storage-folder')) {
-            $this->syncStorageFolder();
-        } else {
-            $this->line('Skipping storage folder...');
-        }
+        $this->syncDatabase();
+        $this->syncStorageFolder();
     }
 
     public function syncDatabase()
     {
+        if ($this->option('no-database')) {
+            $this->line('Skipping database...');
+
+            return;
+        }
+
         $this->fetchProductionDatabaseCredentials();
         $this->fetchProductionDatabaseBackup();
         $this->importDatabaseBackup();
@@ -78,6 +75,12 @@ class PullProductionDataCommand extends Command
 
     public function syncStorageFolder()
     {
+        if ($this->option('no-storage-folder')) {
+            $this->line('Skipping storage folder...');
+
+            return;
+        }
+
         $this->info('Removing current storage folder...');
 
         File::deleteDirectory(storage_path().'/app');
