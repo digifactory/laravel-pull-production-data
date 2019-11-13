@@ -13,6 +13,11 @@
             "name": "Mark",
             "email": "mark@digifactory.nl",
             "role": "Developer"
+        },
+        {
+            "name": "Maurice",
+            "email": "maurice@digifactory.nl",
+            "role": "Developer"
         }
     ],
     "require": {
