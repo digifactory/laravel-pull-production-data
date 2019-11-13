@@ -16,6 +16,8 @@ In the current state this package mainly scratches our own itch. Nonetheless thi
 The package assumes you have:
 - Environment variables `DEPLOY_SERVER` and `DEPLOY_PATH` (customisable in the config)
 - Setup SSH keys between your machine and the production machine
+- `mysql` binary available on your local machine
+- `mysqldump` binary available on your production machine
 
 ## Installation
 
