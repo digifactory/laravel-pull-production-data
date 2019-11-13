@@ -105,6 +105,7 @@ class PullProductionDataCommand extends Command
         $this->info('Fetching production database credentials...');
 
         $process = new Process(['ssh', "{$this->user}@{$this->host}", "-p{$this->port}", 'cat public_html/.env']);
+        $process->setTimeout(config('pull-production-data.timeout'));
         $process->run();
 
         $env = $process->getOutput();
@@ -129,7 +130,7 @@ class PullProductionDataCommand extends Command
         // Create backup
         $this->info('Creating production database backup...');
 
-        $command = sprintf('mysqldump --quick --compact --compress -u%s -p%s %s > %s/database.sql', $this->productionDatabaseUser, $this->productionDatabasePassword, $this->productionDatabaseName, $this->path);
+        $command = sprintf('mysqldump --quick --compress -u%s -p%s %s > %s/database.sql', $this->productionDatabaseUser, $this->productionDatabasePassword, $this->productionDatabaseName, $this->path);
 
         $process = new Process(['ssh', "{$this->user}@{$this->host}", "-p{$this->port}", $command]);
         $process->run();
@@ -153,6 +154,7 @@ class PullProductionDataCommand extends Command
         $command = sprintf('rm %s/database.sql', $this->path);
 
         $process = new Process(['ssh', "{$this->user}@{$this->host}", "-p{$this->port}", $command]);
+        $process->setTimeout(config('pull-production-data.timeout'));
         $process->run();
 
         $this->info('Database removed!');
@@ -170,7 +172,20 @@ class PullProductionDataCommand extends Command
         // Import database backup
         $this->info('Importing database backup...');
 
-        DB::unprepared(file_get_contents(base_path().'/database.sql'));
+        $config = config('database.connections.'.config('pull-production-data.database_connection'));
+
+        $command = sprintf(
+            'mysql --user=%s --password=%s --host=%s %s < %s',
+            $config['username'],
+            $config['password'],
+            $config['host'],
+            $config['database'],
+            base_path().'/database.sql'
+        );
+
+        $process = new Process($command);
+        $process->setTimeout(config('pull-production-data.timeout'));
+        $process->run();
 
         $this->info('Database import ready!');
 

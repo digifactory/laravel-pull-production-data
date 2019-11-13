@@ -67,6 +67,7 @@ If you discover any security related issues, please email helpdesk@digifactory.n
 ## Credits
 
 - [Mark](https://github.com/mrk-j)
+- [Maurice](https://github.com/m-bosch)
 - [All Contributors](../../contributors)
 
 ## License
