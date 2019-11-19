@@ -144,6 +144,7 @@ class PullProductionDataCommand extends Command
         $destination = base_path().'/database.sql';
 
         $process = new Process(['scp', '-P'.$this->port, $source, $destination]);
+        $process->setTimeout(config('pull-production-data.timeout'));
         $process->run();
 
         $this->info('Backup downloaded!');
