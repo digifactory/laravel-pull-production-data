@@ -130,7 +130,14 @@ class PullProductionDataCommand extends Command
         // Create backup
         $this->info('Creating production database backup...');
 
-        $command = sprintf('mysqldump --quick --compress -u%s -p%s %s > %s/database.sql', $this->productionDatabaseUser, $this->productionDatabasePassword, $this->productionDatabaseName, $this->path);
+        $command = sprintf(
+            '%s --quick --compress -u%s -p%s %s > %s/database.sql',
+            config('pull-production-data.paths.mysqldump'),
+            $this->productionDatabaseUser,
+            $this->productionDatabasePassword,
+            $this->productionDatabaseName,
+            $this->path
+        );
 
         $process = new Process(['ssh', "{$this->user}@{$this->host}", "-p{$this->port}", $command]);
         $process->run();
@@ -176,7 +183,8 @@ class PullProductionDataCommand extends Command
         $config = config('database.connections.'.config('pull-production-data.database_connection'));
 
         $command = sprintf(
-            'mysql --user=%s --password=%s --host=%s %s < %s',
+            '%s --user=%s --password=%s --host=%s %s < %s',
+            config('pull-production-data.paths.mysql'),
             $config['username'],
             $config['password'],
             $config['host'],
