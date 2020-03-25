@@ -2,6 +2,6 @@
 
 All notable changes to `laravel-pull-production-data` will be documented in this file
 
-## 0.0.1 - 2019-11-08
+## 1.0.4 - 2020-03-25
 
-- initial release
+- Support for Laravel 7.x.
