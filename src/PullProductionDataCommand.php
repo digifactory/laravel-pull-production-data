@@ -192,7 +192,7 @@ class PullProductionDataCommand extends Command
             base_path().'/database.sql'
         );
 
-        $process = new Process($command);
+        $process = Process::fromShellCommandline($command);
         $process->setTimeout(config('pull-production-data.timeout'));
         $process->run();
 
