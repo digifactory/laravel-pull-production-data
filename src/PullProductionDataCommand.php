@@ -104,7 +104,7 @@ class PullProductionDataCommand extends Command
     {
         $this->info('Fetching production database credentials...');
 
-        $process = new Process(['ssh', "{$this->user}@{$this->host}", "-p{$this->port}", 'cat public_html/.env']);
+        $process = new Process(['ssh', "{$this->user}@{$this->host}", "-p{$this->port}", 'cat '.config('pull-production-data.paths.env').'.env']);
         $process->setTimeout(config('pull-production-data.timeout'));
         $process->run();
 
