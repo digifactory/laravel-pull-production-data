@@ -2,6 +2,9 @@
 
 All notable changes to `laravel-pull-production-data` will be documented in this file
 
+## 1.0.8 - 2020-04-10
+- Added default fallback value for `config('pull-production-data.paths.env')`.
+
 ## 1.0.7 - 2020-04-06
 
 - Made the prefix path to the `.env` file customizable through the config file (default `public_html/`). 
