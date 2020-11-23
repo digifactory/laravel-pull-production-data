@@ -140,6 +140,7 @@ class PullProductionDataCommand extends Command
         );
 
         $process = new Process(['ssh', "{$this->user}@{$this->host}", "-p{$this->port}", $command]);
+        $process->setTimeout(config('pull-production-data.timeout'));
         $process->run();
 
         $this->info('Backup created!');
