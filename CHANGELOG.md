@@ -2,6 +2,12 @@
 
 All notable changes to `laravel-pull-production-data` will be documented in this file
 
+## 1.1.1 - 2021-02-10
+- Removed TravisCi
+- Added Github workflow actions
+- Support for PHP 8.0
+- Dropped support for PHP 7.3
+
 ## 1.1.0 - 2020-11-24
 - Merge pull request #21 from stepresearch/timeout-duplicate-prod, Use timeout setting when creating production database backup
 
