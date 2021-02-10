@@ -2,6 +2,12 @@
 
 All notable changes to `laravel-pull-production-data` will be documented in this file
 
+## 1.1.0 - 2020-11-24
+- Merge pull request #21 from stepresearch/timeout-duplicate-prod, Use timeout setting when creating production database backup
+
+## 1.0.9 - 2020-09-24
+- Support for Laravel 8.x
+
 ## 1.0.8 - 2020-04-10
 - Added default fallback value for `config('pull-production-data.paths.env')`.
 
