@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-pull-production-data` will be documented in this file
 
+## 2.0.0 - 2022-02-23
+- Support for Laravel 9 and PHP 8.1
+- Dropped support for Laravel 7, Laravel 8 and PHP 7.4
+
 ## 1.1.1 - 2021-02-10
 - Removed TravisCi
 - Added Github workflow actions
