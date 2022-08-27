@@ -222,7 +222,7 @@ class PullProductionDataCommand extends Command
             foreach ($this->appendingCommands as $command) {
                 Artisan::call($command);
 
-                if($this->displayOutputForAappendingCommands) {
+                if ($this->displayOutputForAappendingCommands) {
                     $this->info(Artisan::output());
                 }
             }
