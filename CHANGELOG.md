@@ -2,6 +2,9 @@
 
 All notable changes to `laravel-pull-production-data` will be documented in this file
 
+## 2.1.0 - 2022-08-27
+- Added function to append commands after running `laravel-pull-production-data`
+
 ## 2.0.0 - 2022-02-23
 - Support for Laravel 9 and PHP 8.1
 - Dropped support for Laravel 7, Laravel 8 and PHP 7.4
