@@ -13,4 +13,9 @@ return [
         'mysqldump' => 'mysqldump', // Path to mysqldump binary on remote server
         'env' => 'public_html/', // Path to the .env file relative to the SSH user's home directory
     ],
+
+    'appending_commands' => [
+        'commands' => [], // Add the commands you want to execute after Pull Production Data is finished
+        'display_output' => true, // Do you want to display the output of these commands
+    ],
 ];

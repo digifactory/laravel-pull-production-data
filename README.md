@@ -46,6 +46,9 @@ The following flags are available:
 | -D, --no-database | Whether the database should not be synced |
 | -S, --no-storage-folder | Whether the storage folder should not be synced |
 
+### V2.1
+Since this version it is possible to run any command when `php artisan pull-production-data` is completed. For example: this way you can anonimize data for local/testing purpose.
+
 ### Preview
 
 ![Screenshot of the command](https://digifactory.github.io/laravel-pull-production-data/screenshot.png)
