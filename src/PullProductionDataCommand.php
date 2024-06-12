@@ -184,7 +184,7 @@ class PullProductionDataCommand extends Command
         $config = config('database.connections.'.config('pull-production-data.database_connection'));
 
         $command = sprintf(
-            '%s --user=%s --password=%s --host=%s %s < %s',
+            '%s -f --user=%s --password=%s --host=%s %s < %s',
             config('pull-production-data.paths.mysql'),
             $config['username'],
             $config['password'],
