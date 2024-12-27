@@ -2,8 +2,14 @@
 
 All notable changes to `laravel-pull-production-data` will be documented in this file
 
-## 2.1.0 - 2022-08-27
+## 4.1.0 - 2024-12-27
 - Added function to append commands after running `laravel-pull-production-data`
+
+## 4.0.1 - 2024-06-12
+- Forcing import for mysql import for issues with MariaDB dump with safemode
+
+## 4.0.0 - 2024-04-16
+- Support for Laravel 11
 
 ## 2.0.0 - 2022-02-23
 - Support for Laravel 9 and PHP 8.1
