@@ -15,7 +15,9 @@ return [
     ],
 
     'appending_commands' => [
-        'commands' => [], // Add the commands you want to execute after Pull Production Data is finished
+        'commands' => [ // Add the commands you want to execute after Pull Production Data is finished
+            'migrate' // As a default we run the `migrate` command to have all migrations completed after getting the production-database
+        ],
         'display_output' => true, // Do you want to display the output of these commands
     ],
 ];
