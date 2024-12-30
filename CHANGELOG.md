@@ -2,7 +2,7 @@
 
 All notable changes to `laravel-pull-production-data` will be documented in this file
 
-## 4.1.0 - 2024-12-27
+## 4.1.0 - 2024-12-30
 - Added function to append commands after running `laravel-pull-production-data`
 
 ## 4.0.1 - 2024-06-12
