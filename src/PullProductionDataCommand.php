@@ -3,13 +3,14 @@
 namespace DigiFactory\PullProductionData;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Symfony\Component\Process\Process;
 
 class PullProductionDataCommand extends Command
 {
-    protected $signature = 'pull-production-data {--D|no-database : Whether the database should not be synced} {--S|no-storage-folder : Whether the storage folder should not be synced}';
+    protected $signature = 'pull-production-data {--D|no-database : Whether the database should not be synced} {--S|no-storage-folder : Whether the storage folder should not be synced} {--C|no-appending-commands : Whether the appending commands should run}';
     protected $description = 'Pull your production storage folder and database to your local environment';
 
     protected $user;
@@ -21,12 +22,17 @@ class PullProductionDataCommand extends Command
     protected $productionDatabaseUser;
     protected $productionDatabasePassword;
 
+    protected $appendingCommands;
+    protected $displayOutputForAappendingCommands;
+
     public function __construct()
     {
         parent::__construct();
 
         $deployServer = config('pull-production-data.deploy_server');
         $this->path = config('pull-production-data.deploy_path');
+        $this->appendingCommands = config('pull-production-data.appending_commands.commands');
+        $this->displayOutputForAappendingCommands = config('pull-production-data.appending_commands.display_output');
 
         preg_match('/(.*)@([^\s]+)(?:\s-p)?([0-9]*)/', $deployServer, $matches);
 
@@ -58,6 +64,7 @@ class PullProductionDataCommand extends Command
 
         $this->syncDatabase();
         $this->syncStorageFolder();
+        $this->executeAppendingCommands();
     }
 
     public function syncDatabase()
@@ -205,6 +212,29 @@ class PullProductionDataCommand extends Command
         unlink(base_path().'/database.sql');
 
         $this->info('Database backup deleted!');
+    }
+
+    public function executeAppendingCommands()
+    {
+        if ($this->option('no-appending-commands')) {
+            $this->line('Skipping appended commands...');
+
+            return;
+        }
+
+        if ($this->appendingCommands && is_array($this->appendingCommands) && count($this->appendingCommands) > 0) {
+            $this->info('Executing appending commands');
+
+            foreach ($this->appendingCommands as $command) {
+                Artisan::call(addslashes($command));
+
+                if ($this->displayOutputForAappendingCommands) {
+                    $this->info(Artisan::output());
+                }
+            }
+        } else {
+            $this->info('No appending scripts need to executed');
+        }
     }
 
     public function info($string, $verbosity = null)
