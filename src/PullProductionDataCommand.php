@@ -10,7 +10,7 @@ use Symfony\Component\Process\Process;
 
 class PullProductionDataCommand extends Command
 {
-    protected $signature = 'pull-production-data {--D|no-database : Whether the database should not be synced} {--S|no-storage-folder : Whether the storage folder should not be synced}';
+    protected $signature = 'pull-production-data {--D|no-database : Whether the database should not be synced} {--S|no-storage-folder : Whether the storage folder should not be synced} {--C|no-appending-commands : Whether the appending commands should run}';
     protected $description = 'Pull your production storage folder and database to your local environment';
 
     protected $user;
@@ -216,6 +216,12 @@ class PullProductionDataCommand extends Command
 
     public function executeAppendingCommands()
     {
+        if ($this->option('no-appending-commands')) {
+            $this->line('Skipping appended commands...');
+
+            return;
+        }
+
         if ($this->appendingCommands && is_array($this->appendingCommands) && count($this->appendingCommands) > 0) {
             $this->info('Executing appending commands');
 
