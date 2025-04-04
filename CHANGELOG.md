@@ -2,6 +2,12 @@
 
 All notable changes to `laravel-pull-production-data` will be documented in this file
 
+## 4.2.1 - 2025-04-04
+- Fixed github workflow tests
+
+## 4.2.0 - 2024-04-01
+- Support for Laravel 11
+
 ## 4.1.0 - 2024-12-30
 - Added function to append commands after running `laravel-pull-production-data`
 
