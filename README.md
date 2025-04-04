@@ -2,7 +2,7 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/digifactory/laravel-pull-production-data.svg?style=flat-square)](https://packagist.org/packages/digifactory/laravel-pull-production-data)
 [![MIT Licensed](https://img.shields.io/github/license/digifactory/laravel-pull-production-data?style=flat-square)](LICENSE.md)
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/digifactory/laravel-pull-production-data/test.yml?branch=master)
+[![run-tests](https://github.com/digifactory/laravel-pull-production-data/actions/workflows/run-php-tests.yml/badge.svg)](https://github.com/digifactory/laravel-pull-production-data/actions/workflows/run-php-tests.yml)
 [![Quality Score](https://img.shields.io/scrutinizer/g/digifactory/laravel-pull-production-data.svg?style=flat-square)](https://scrutinizer-ci.com/g/digifactory/laravel-pull-production-data)
 [![StyleCI](https://styleci.io/repos/220437776/shield?branch=master)](https://styleci.io/repos/220437776)
 [![Total Downloads](https://img.shields.io/packagist/dt/digifactory/laravel-pull-production-data.svg?style=flat-square)](https://packagist.org/packages/digifactory/laravel-pull-production-data)
