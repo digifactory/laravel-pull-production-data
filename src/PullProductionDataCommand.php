@@ -23,7 +23,7 @@ class PullProductionDataCommand extends Command
     protected $productionDatabasePassword;
 
     protected $appendingCommands;
-    protected $displayOutputForAappendingCommands;
+    protected $displayOutputForAppendingCommands;
 
     public function __construct()
     {
@@ -32,7 +32,7 @@ class PullProductionDataCommand extends Command
         $deployServer = config('pull-production-data.deploy_server');
         $this->path = config('pull-production-data.deploy_path');
         $this->appendingCommands = config('pull-production-data.appending_commands.commands');
-        $this->displayOutputForAappendingCommands = config('pull-production-data.appending_commands.display_output');
+        $this->displayOutputForAppendingCommands = config('pull-production-data.appending_commands.display_output');
 
         preg_match('/(.*)@([^\s]+)(?:\s-p)?([0-9]*)/', $deployServer, $matches);
 
