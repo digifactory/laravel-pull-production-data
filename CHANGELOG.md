@@ -2,6 +2,13 @@
 
 All notable changes to `laravel-pull-production-data` will be documented in this file
 
+## 5.0.2 - 2026-04-08
+- patched PHPUnit issues
+
+## 5.0.0 - 2026-04-08
+-Laravel 13 compatibility
+- Dropped support for PHP 8.2
+
 ## 4.2.1 - 2025-04-04
 - Fixed github workflow tests
 
